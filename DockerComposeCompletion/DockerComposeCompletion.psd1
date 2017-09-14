@@ -4,7 +4,7 @@
 RootModule = 'DockerComposeCompletion'
 
 # Version number of this module.
-ModuleVersion = '1.16.1.170910'
+ModuleVersion = '1.16.1.170915'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -99,7 +99,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Initial release.'
+        ReleaseNotes = 'Fix error when there is no alias.'
 
     } # End of PSData hashtable
 

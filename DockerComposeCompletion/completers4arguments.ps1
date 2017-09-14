@@ -3,7 +3,7 @@ $serviceAll = {
 
 	$dcOptions = New-Object System.Collections.ArrayList
 	foreach ($ce in $commandAst.CommandElements) {
-		if ($ce.Extent.Text -in (Invoke-Completer 'docker-compose' -Completer).CompletionText) {
+		if ($ce.Extent.Text -in (Invoke-Completer docker-compose -Completer).CompletionText) {
 			break
 		}
 		$dcOptions.Add($ce.Extent.Text) > $null
@@ -16,7 +16,7 @@ $serviceRunning = {
 	
 	$dcOptions = New-Object System.Collections.ArrayList
 	foreach ($ce in $commandAst.CommandElements) {
-		if ($ce.Extent.Text -in (Invoke-Completer 'docker-compose' -Completer).CompletionText) {
+		if ($ce.Extent.Text -in (Invoke-Completer docker-compose -Completer).CompletionText) {
 			break
 		}
 		$dcOptions.Add($ce.Extent.Text) > $null
@@ -37,7 +37,7 @@ $serviceNotRunning = {
 	
 	$dcOptions = New-Object System.Collections.ArrayList
 	foreach ($ce in $commandAst.CommandElements) {
-		if ($ce.Extent.Text -in (Invoke-Completer 'docker-compose' -Completer).CompletionText) {
+		if ($ce.Extent.Text -in (Invoke-Completer docker-compose -Completer).CompletionText) {
 			break
 		}
 		$dcOptions.Add($ce.Extent.Text) > $null
@@ -58,7 +58,7 @@ $servicePaused = {
 	
 	$dcOptions = New-Object System.Collections.ArrayList
 	foreach ($ce in $commandAst.CommandElements) {
-		if ($ce.Extent.Text -in (Invoke-Completer 'docker-compose' -Completer).CompletionText) {
+		if ($ce.Extent.Text -in (Invoke-Completer docker-compose -Completer).CompletionText) {
 			break
 		}
 		$dcOptions.Add($ce.Extent.Text) > $null
@@ -74,15 +74,15 @@ $servicePaused = {
 	$serviceNames | Sort-Object
 }
 
-Register-Completer 'docker-compose_build' $serviceAll
-Register-Completer 'docker-compose_create' $serviceAll
-Register-Completer 'docker-compose_down_--rmi' { 'all', 'local' }
-Register-Completer 'docker-compose_events' $serviceAll
-Register-Completer 'docker-compose_exec' $serviceRunning
-Register-Completer 'docker-compose_help' (Get-Completer 'docker-compose')
-Register-Completer 'docker-compose_images' $serviceAll
-Register-Completer 'docker-compose_kill' $serviceRunning
-Register-Completer 'docker-compose_kill_-s' {
+Register-Completer docker-compose_build $serviceAll
+Register-Completer docker-compose_create $serviceAll
+Register-Completer docker-compose_down_--rmi { 'all', 'local' }
+Register-Completer docker-compose_events $serviceAll
+Register-Completer docker-compose_exec $serviceRunning
+Register-Completer docker-compose_help (Get-Completer docker-compose)
+Register-Completer docker-compose_images $serviceAll
+Register-Completer docker-compose_kill $serviceRunning
+Register-Completer docker-compose_kill_-s {
 	'SIGCONT'
 	'SIGHUP'
 	'SIGINT'
@@ -91,21 +91,21 @@ Register-Completer 'docker-compose_kill_-s' {
 	'SIGUSR1'
 	'SIGUSR2'
 }
-Register-Completer 'docker-compose_logs' $serviceAll
-Register-Completer 'docker-compose_pause' $serviceRunning
-Register-Completer 'docker-compose_port' $serviceAll
-Register-Completer 'docker-compose_port_--protocol' { 'tcp', 'udp' }
-Register-Completer 'docker-compose_ps' $serviceAll
-Register-Completer 'docker-compose_pull' $serviceAll
-Register-Completer 'docker-compose_push' $serviceAll
-Register-Completer 'docker-compose_restart' $serviceRunning
-Register-Completer 'docker-compose_rm' $serviceAll
-Register-Completer 'docker-compose_run' $serviceAll
-Register-Completer 'docker-compose_scale' $serviceAll
-Register-Completer 'docker-compose_start' $serviceNotRunning
-Register-Completer 'docker-compose_stop' $serviceRunning
-Register-Completer 'docker-compose_top' $serviceRunning
-Register-Completer 'docker-compose_unpause' $servicePaused
-Register-Completer 'docker-compose_up' $serviceAll
-Register-Completer 'docker-compose_up_--exit-code-from' $serviceAll
-Register-Completer 'docker-compose_up_--scale' $serviceAll
+Register-Completer docker-compose_logs $serviceAll
+Register-Completer docker-compose_pause $serviceRunning
+Register-Completer docker-compose_port $serviceAll
+Register-Completer docker-compose_port_--protocol { 'tcp', 'udp' }
+Register-Completer docker-compose_ps $serviceAll
+Register-Completer docker-compose_pull $serviceAll
+Register-Completer docker-compose_push $serviceAll
+Register-Completer docker-compose_restart $serviceRunning
+Register-Completer docker-compose_rm $serviceAll
+Register-Completer docker-compose_run $serviceAll
+Register-Completer docker-compose_scale $serviceAll
+Register-Completer docker-compose_start $serviceNotRunning
+Register-Completer docker-compose_stop $serviceRunning
+Register-Completer docker-compose_top $serviceRunning
+Register-Completer docker-compose_unpause $servicePaused
+Register-Completer docker-compose_up $serviceAll
+Register-Completer docker-compose_up_--exit-code-from $serviceAll
+Register-Completer docker-compose_up_--scale $serviceAll

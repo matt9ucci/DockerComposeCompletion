@@ -18,6 +18,19 @@ function Select-CompletionResult {
 	}
 }
 
+function Invoke-CompletionCustomScript {
+	Param(
+		[Parameter(Mandatory = $true, ValueFromPipeline = $true)]
+		[string[]]$Path
+	)
+
+	Process {
+		foreach ($p in $Path) {
+			. $p
+		}
+	}
+}
+
 Invoke-CompletionCustomScript $PSScriptRoot\completers.ps1, $PSScriptRoot\completers4arguments.ps1
 if ($CustomScriptPath) {
 	Invoke-CompletionCustomScript $CustomScriptPath
