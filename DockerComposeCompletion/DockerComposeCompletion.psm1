@@ -91,4 +91,4 @@ $argumentCompleter = {
 	$completionResult | Where-Object CompletionText -Like "$wordToCompleteSubstring*"
 }
 
-Register-NativeCommandArgumentCompleter 'docker-compose' $argumentCompleter
+Register-NativeCommandArgumentCompleter docker-compose $argumentCompleter

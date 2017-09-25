@@ -1,4 +1,4 @@
-﻿# Docker Compose 1.16.1
+﻿# Docker Compose 1.17.0
 Register-Completer docker-compose {
 	COMPGEN build Command 'Build or rebuild services'
 	COMPGEN bundle Command 'Generate a Docker bundle from the Compose file'
@@ -184,6 +184,7 @@ Register-Completer docker-compose_up -Option {
 	COMPGEN --no-color Switch 'Produce monochrome output'
 	COMPGEN --no-deps Switch 'Don''t start linked services'
 	COMPGEN --no-recreate Switch 'If containers already exist, don''t recreate them. Incompatible with --force-recreate'
+	COMPGEN --no-start Switch 'Don''t start the services after creating them.'
 	COMPGEN --remove-orphans Switch 'Remove containers for services not defined in the Compose file'
 	COMPGEN --scale string 'Scale SERVICE to NUM instances. Overrides the `scale` setting in the Compose file if present'
 	COMPGEN --timeout string 'Use this timeout in seconds for container shutdown when attached or when containers are already running'
