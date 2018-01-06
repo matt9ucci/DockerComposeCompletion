@@ -1,4 +1,4 @@
-﻿# Docker Compose 1.17.0
+﻿# Docker Compose 1.18.0
 Register-Completer docker-compose {
 	COMPGEN build Command 'Build or rebuild services'
 	COMPGEN bundle Command 'Generate a Docker bundle from the Compose file'
@@ -51,6 +51,8 @@ Register-Completer docker-compose -Option {
 Register-Completer docker-compose_build -Option {
 	COMPGEN --build-arg string 'Set build-time variables for one service'
 	COMPGEN --force-rm Switch 'Always remove intermediate containers'
+	COMPGEN --memory string 'Sets memory limit for the bulid container.'
+	COMPGEN '-m' string 'Sets memory limit for the bulid container.'
 	COMPGEN --no-cache Switch 'Do not use cache when building the image'
 	COMPGEN --pull Switch 'Always attempt to pull a newer version of the image'
 }
@@ -79,6 +81,8 @@ Register-Completer docker-compose_create -Option {
 Register-Completer docker-compose_down -Option {
 	COMPGEN --remove-orphans Switch 'Remove containers for services not defined in the Compose file'
 	COMPGEN --rmi string 'Remove images. Type must be one of: ''all'': Remove all images used by any service. ''local'': Remove only images that don''t have a custom tag set by the `image` field.'
+	COMPGEN --timeout string 'Specify a shutdown timeout in seconds.'
+	COMPGEN '-t' string 'Specify a shutdown timeout in seconds.'
 	COMPGEN --volumes Switch 'Remove named volumes declared in the `volumes` section of the Compose file and anonymous volumes attached to containers'
 	COMPGEN '-v' Switch 'Remove named volumes declared in the `volumes` section of the Compose file and anonymous volumes attached to containers'
 }
@@ -89,6 +93,8 @@ Register-Completer docker-compose_events -Option {
 
 Register-Completer docker-compose_exec -Option {
 	COMPGEN '-d' Switch 'Detached mode: Run command in the background'
+	COMPGEN --env string 'Set environment variables (can be used multiple times, not supported in API < 1.25)'
+	COMPGEN '-e' string 'Set environment variables (can be used multiple times, not supported in API < 1.25)'
 	COMPGEN --index string 'index of the container if there are multiple instances of a service'
 	COMPGEN --privileged Switch 'Give extended privileges to the process'
 	COMPGEN --user string 'Run the command as this user'
@@ -149,6 +155,8 @@ Register-Completer docker-compose_run -Option {
 	COMPGEN '-d' Switch 'Detached mode: Run container in the background, print new container name'
 	COMPGEN '-e' string 'Set an environment variable (can be used multiple times)'
 	COMPGEN --entrypoint string 'Override the entrypoint of the image'
+	COMPGEN --label string 'Add or override a label (can be used multiple times)'
+	COMPGEN '-l' string 'Add or override a label (can be used multiple times)'
 	COMPGEN --name string 'Assign a name to the container'
 	COMPGEN --no-deps Switch 'Don''t start linked services'
 	COMPGEN --publish string 'Publish a container''s port(s) to the host'
@@ -177,7 +185,7 @@ Register-Completer docker-compose_stop -Option {
 Register-Completer docker-compose_up -Option {
 	COMPGEN --abort-on-container-exit Switch 'Stops all containers if any container was stopped. Incompatible with -d'
 	COMPGEN --build Switch 'Build images before starting containers'
-	COMPGEN '-d' Switch 'Detached mode: Run containers in the background, print new container names. Incompatible with --abort-on-container-exit'
+	COMPGEN '-d' Switch 'Detached mode: Run containers in the background, print new container names. Incompatible with --abort-on-container-exit and --timeout.'
 	COMPGEN --exit-code-from string 'Return the exit code of the selected service container. Implies --abort-on-container-exit'
 	COMPGEN --force-recreate Switch 'Recreate containers even if their configuration and image haven''t changed. Incompatible with --no-recreate'
 	COMPGEN --no-build Switch 'Don''t build an image, even if it''s missing'
@@ -187,8 +195,8 @@ Register-Completer docker-compose_up -Option {
 	COMPGEN --no-start Switch 'Don''t start the services after creating them.'
 	COMPGEN --remove-orphans Switch 'Remove containers for services not defined in the Compose file'
 	COMPGEN --scale string 'Scale SERVICE to NUM instances. Overrides the `scale` setting in the Compose file if present'
-	COMPGEN --timeout string 'Use this timeout in seconds for container shutdown when attached or when containers are already running'
-	COMPGEN '-t' string 'Use this timeout in seconds for container shutdown when attached or when containers are already running'
+	COMPGEN --timeout string 'Use this timeout in seconds for container shutdown when attached or when containers are already running. Incompatible with -d.'
+	COMPGEN '-t' string 'Use this timeout in seconds for container shutdown when attached or when containers are already running. Incompatible with -d.'
 }
 
 Register-Completer docker-compose_version -Option {

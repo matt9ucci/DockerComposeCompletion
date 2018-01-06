@@ -4,7 +4,7 @@
 RootModule = 'DockerComposeCompletion'
 
 # Version number of this module.
-ModuleVersion = '1.17.0.171107'
+ModuleVersion = '1.18.0.180107'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -19,7 +19,7 @@ Author = 'Masatoshi Higuchi'
 CompanyName = 'N/A'
 
 # Copyright statement for this module
-Copyright = '(c) 2017 Masatoshi Higuchi. All rights reserved.'
+Copyright = '(c) 2018 Masatoshi Higuchi. All rights reserved.'
 
 # Description of the functionality provided by this module
 Description = 'Docker Compose command completion for PowerShell.'
@@ -99,7 +99,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Add `--no-start` option to the `up` command'
+        ReleaseNotes = 'Update for Docker Compose 1.18.0'
 
     } # End of PSData hashtable
 
