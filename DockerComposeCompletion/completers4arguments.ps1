@@ -96,6 +96,25 @@ Register-Completer docker-compose_pause $serviceRunning
 Register-Completer docker-compose_port $serviceAll
 Register-Completer docker-compose_port_--protocol { 'tcp', 'udp' }
 Register-Completer docker-compose_ps $serviceAll
+Register-Completer docker-compose_ps_--filter {
+	Param([string]$wordToComplete)
+
+	if ($wordToComplete -notlike '*=*') {
+		COMPGEN source string 'Service''s source'
+		COMPGEN status string 'Service''s status'
+		return
+	}
+
+	$key = ($wordToComplete -split '=')[0]
+	$values = switch ($key) {
+		source { 'build', 'image' }
+		status { 'paused', 'restarting', 'running', 'stopped' }
+	}
+
+	foreach ($v in $values) {
+		COMPGEN "$key=$v" string $v $v ([System.Management.Automation.CompletionResultType]::ParameterValue)
+	}
+}
 Register-Completer docker-compose_pull $serviceAll
 Register-Completer docker-compose_push $serviceAll
 Register-Completer docker-compose_restart $serviceRunning

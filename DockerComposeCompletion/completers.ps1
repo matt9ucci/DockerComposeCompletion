@@ -51,8 +51,8 @@ Register-Completer docker-compose -Option {
 Register-Completer docker-compose_build -Option {
 	COMPGEN --build-arg string 'Set build-time variables for one service'
 	COMPGEN --force-rm Switch 'Always remove intermediate containers'
-	COMPGEN --memory string 'Sets memory limit for the bulid container.'
-	COMPGEN '-m' string 'Sets memory limit for the bulid container.'
+	COMPGEN --memory string 'Sets memory limit for the build container'
+	COMPGEN '-m' string 'Sets memory limit for the build container'
 	COMPGEN --no-cache Switch 'Do not use cache when building the image'
 	COMPGEN --pull Switch 'Always attempt to pull a newer version of the image'
 }
@@ -125,7 +125,9 @@ Register-Completer docker-compose_port -Option {
 }
 
 Register-Completer docker-compose_ps -Option {
+	COMPGEN --filter string 'Filter services by a property'
 	COMPGEN '-q' Switch 'Only display IDs'
+	COMPGEN --services Switch 'Display services'
 }
 
 Register-Completer docker-compose_pull -Option {
@@ -183,20 +185,23 @@ Register-Completer docker-compose_stop -Option {
 }
 
 Register-Completer docker-compose_up -Option {
+	COMPGEN --always-recreate-deps Switch 'Recreate dependent containers. Incompatible with --no-recreate'
 	COMPGEN --abort-on-container-exit Switch 'Stops all containers if any container was stopped. Incompatible with -d'
 	COMPGEN --build Switch 'Build images before starting containers'
-	COMPGEN '-d' Switch 'Detached mode: Run containers in the background, print new container names. Incompatible with --abort-on-container-exit and --timeout.'
+	COMPGEN '-d' Switch 'Detached mode: Run containers in the background, print new container names. Incompatible with --abort-on-container-exit'
 	COMPGEN --exit-code-from string 'Return the exit code of the selected service container. Implies --abort-on-container-exit'
-	COMPGEN --force-recreate Switch 'Recreate containers even if their configuration and image haven''t changed. Incompatible with --no-recreate'
+	COMPGEN --force-recreate Switch 'Recreate containers even if their configuration and image haven''t changed'
 	COMPGEN --no-build Switch 'Don''t build an image, even if it''s missing'
 	COMPGEN --no-color Switch 'Produce monochrome output'
 	COMPGEN --no-deps Switch 'Don''t start linked services'
-	COMPGEN --no-recreate Switch 'If containers already exist, don''t recreate them. Incompatible with --force-recreate'
+	COMPGEN --no-recreate Switch 'If containers already exist, don''t recreate them. Incompatible with --force-recreate and -V'
 	COMPGEN --no-start Switch 'Don''t start the services after creating them.'
 	COMPGEN --remove-orphans Switch 'Remove containers for services not defined in the Compose file'
+	COMPGEN --renew-anon-volumes Switch 'Recreate anonymous volumes instead of retrieving data from the previous containers'
+	COMPGEN '-V' Switch 'Recreate anonymous volumes instead of retrieving data from the previous containers'
 	COMPGEN --scale string 'Scale SERVICE to NUM instances. Overrides the `scale` setting in the Compose file if present'
-	COMPGEN --timeout string 'Use this timeout in seconds for container shutdown when attached or when containers are already running. Incompatible with -d.'
-	COMPGEN '-t' string 'Use this timeout in seconds for container shutdown when attached or when containers are already running. Incompatible with -d.'
+	COMPGEN --timeout string 'Use this timeout in seconds for container shutdown when attached or when containers are already running'
+	COMPGEN '-t' string 'Use this timeout in seconds for container shutdown when attached or when containers are already running'
 }
 
 Register-Completer docker-compose_version -Option {
