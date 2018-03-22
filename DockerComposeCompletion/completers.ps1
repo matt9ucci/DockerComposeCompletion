@@ -1,4 +1,4 @@
-﻿# Docker Compose 1.18.0
+﻿# Docker Compose 1.20.0
 Register-Completer docker-compose {
 	COMPGEN build Command 'Build or rebuild services'
 	COMPGEN bundle Command 'Generate a Docker bundle from the Compose file'
@@ -29,15 +29,17 @@ Register-Completer docker-compose {
 }
 
 Register-Completer docker-compose -Option {
+	COMPGEN --compatibility Switch 'If set, Compose will attempt to convert deploy keys in v3 files to their non-Swarm equivalent'
 	COMPGEN --file string 'Specify an alternate compose file'
 	COMPGEN '-f' string 'Specify an alternate compose file'
 	COMPGEN --host string 'Daemon socket to connect to'
 	COMPGEN '-H' string 'Daemon socket to connect to'
+	COMPGEN --log-level string 'Set log level (DEBUG, INFO, WARNING, ERROR, CRITICAL)'
 	COMPGEN --no-ansi Switch 'Do not print ANSI control characters'
 	COMPGEN --project-directory string 'Specify an alternate working directory'
 	COMPGEN --project-name string 'Specify an alternate project name'
 	COMPGEN '-p' string 'Specify an alternate project name'
-	COMPGEN --skip-hostname-check Switch 'Don''t check the daemon''s hostname against the name specified in the client certificate (for example if your docker host is an IP address)'
+	COMPGEN --skip-hostname-check Switch 'Don''t check the daemon''s hostname against the name specified in the client certificate'
 	COMPGEN --tls Switch 'Use TLS; implied by --tlsverify'
 	COMPGEN --tlscacert string 'Trust certs signed only by this CA'
 	COMPGEN --tlscert string 'Path to TLS certificate file'
@@ -49,7 +51,7 @@ Register-Completer docker-compose -Option {
 }
 
 Register-Completer docker-compose_build -Option {
-	COMPGEN --build-arg string 'Set build-time variables for one service'
+	COMPGEN --build-arg string 'Set build-time variables for services.'
 	COMPGEN --force-rm Switch 'Always remove intermediate containers'
 	COMPGEN --memory string 'Sets memory limit for the build container'
 	COMPGEN '-m' string 'Sets memory limit for the build container'
@@ -92,6 +94,7 @@ Register-Completer docker-compose_events -Option {
 }
 
 Register-Completer docker-compose_exec -Option {
+	COMPGEN --detach Switch 'Detached mode: Run command in the background.'
 	COMPGEN '-d' Switch 'Detached mode: Run command in the background'
 	COMPGEN --env string 'Set environment variables (can be used multiple times, not supported in API < 1.25)'
 	COMPGEN '-e' string 'Set environment variables (can be used multiple times, not supported in API < 1.25)'
@@ -103,6 +106,7 @@ Register-Completer docker-compose_exec -Option {
 }
 
 Register-Completer docker-compose_images -Option {
+	COMPGEN --quiet Switch 'Only display IDs'
 	COMPGEN '-q' Switch 'Only display IDs'
 }
 
@@ -126,6 +130,7 @@ Register-Completer docker-compose_port -Option {
 
 Register-Completer docker-compose_ps -Option {
 	COMPGEN --filter string 'Filter services by a property'
+	COMPGEN --quiet Switch 'Only display IDs'
 	COMPGEN '-q' Switch 'Only display IDs'
 	COMPGEN --services Switch 'Display services'
 }
@@ -134,6 +139,8 @@ Register-Completer docker-compose_pull -Option {
 	COMPGEN --ignore-pull-failures Switch 'Pull what it can and ignores images with pull failures'
 	COMPGEN --parallel Switch 'Pull multiple images in parallel'
 	COMPGEN --quiet Switch 'Pull without printing progress information'
+	COMPGEN '-q' Switch 'Pull without printing progress information'
+	COMPGEN --include-deps Switch 'Also pull services declared as dependencies'
 }
 
 Register-Completer docker-compose_push -Option {
@@ -154,6 +161,7 @@ Register-Completer docker-compose_rm -Option {
 }
 
 Register-Completer docker-compose_run -Option {
+	COMPGEN --detach Switch 'Detached mode: Run container in the background, print new container name.'
 	COMPGEN '-d' Switch 'Detached mode: Run container in the background, print new container name'
 	COMPGEN '-e' string 'Set an environment variable (can be used multiple times)'
 	COMPGEN --entrypoint string 'Override the entrypoint of the image'
@@ -166,6 +174,7 @@ Register-Completer docker-compose_run -Option {
 	COMPGEN --rm Switch 'Remove container after run. Ignored in detached mode'
 	COMPGEN --service-ports Switch 'Run command with the service''s ports enabled and mapped to the host'
 	COMPGEN '-T' Switch 'Disable pseudo-tty allocation. By default `docker-compose run` allocates a TTY'
+	COMPGEN --use-aliases Switch 'Use the service''s network aliases in the network(s) the container connects to.'
 	COMPGEN --user string 'Run as specified username or uid'
 	COMPGEN '-u' string 'Run as specified username or uid'
 	COMPGEN --volume string 'Bind mount a volume (default [])'
@@ -188,7 +197,8 @@ Register-Completer docker-compose_up -Option {
 	COMPGEN --always-recreate-deps Switch 'Recreate dependent containers. Incompatible with --no-recreate'
 	COMPGEN --abort-on-container-exit Switch 'Stops all containers if any container was stopped. Incompatible with -d'
 	COMPGEN --build Switch 'Build images before starting containers'
-	COMPGEN '-d' Switch 'Detached mode: Run containers in the background, print new container names. Incompatible with --abort-on-container-exit'
+	COMPGEN --detach Switch 'Detached mode: Run containers in the background, print new container names. Incompatible with'
+	COMPGEN '-d' Switch 'Detached mode: Run containers in the background, print new container names. Incompatible with'
 	COMPGEN --exit-code-from string 'Return the exit code of the selected service container. Implies --abort-on-container-exit'
 	COMPGEN --force-recreate Switch 'Recreate containers even if their configuration and image haven''t changed'
 	COMPGEN --no-build Switch 'Don''t build an image, even if it''s missing'
@@ -196,6 +206,7 @@ Register-Completer docker-compose_up -Option {
 	COMPGEN --no-deps Switch 'Don''t start linked services'
 	COMPGEN --no-recreate Switch 'If containers already exist, don''t recreate them. Incompatible with --force-recreate and -V'
 	COMPGEN --no-start Switch 'Don''t start the services after creating them.'
+	COMPGEN --quiet-pull Switch 'Pull without printing progress information'
 	COMPGEN --remove-orphans Switch 'Remove containers for services not defined in the Compose file'
 	COMPGEN --renew-anon-volumes Switch 'Recreate anonymous volumes instead of retrieving data from the previous containers'
 	COMPGEN '-V' Switch 'Recreate anonymous volumes instead of retrieving data from the previous containers'

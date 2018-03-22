@@ -74,6 +74,7 @@ $servicePaused = {
 	$serviceNames | Sort-Object
 }
 
+Register-Completer docker-compose_--log-level { 'debug', 'info', 'warning', 'error', 'critical' }
 Register-Completer docker-compose_build $serviceAll
 Register-Completer docker-compose_create $serviceAll
 Register-Completer docker-compose_down_--rmi { 'all', 'local' }
