@@ -1,4 +1,4 @@
-﻿# Docker Compose 1.20.0
+﻿# Docker Compose 1.21.0
 Register-Completer docker-compose {
 	COMPGEN build Command 'Build or rebuild services'
 	COMPGEN bundle Command 'Generate a Docker bundle from the Compose file'
@@ -51,6 +51,7 @@ Register-Completer docker-compose -Option {
 }
 
 Register-Completer docker-compose_build -Option {
+	COMPGEN --compress Switch 'Compress the build context using gzip.'
 	COMPGEN --build-arg string 'Set build-time variables for services.'
 	COMPGEN --force-rm Switch 'Always remove intermediate containers'
 	COMPGEN --memory string 'Sets memory limit for the build container'
@@ -103,6 +104,8 @@ Register-Completer docker-compose_exec -Option {
 	COMPGEN --user string 'Run the command as this user'
 	COMPGEN '-u' string 'Run the command as this user'
 	COMPGEN '-T' Switch 'Disable pseudo-tty allocation'
+	COMPGEN --workdir string 'Path to workdir directory for this command.'
+	COMPGEN '-w' string 'Path to workdir directory for this command.'
 }
 
 Register-Completer docker-compose_images -Option {
@@ -137,10 +140,11 @@ Register-Completer docker-compose_ps -Option {
 
 Register-Completer docker-compose_pull -Option {
 	COMPGEN --ignore-pull-failures Switch 'Pull what it can and ignores images with pull failures'
-	COMPGEN --parallel Switch 'Pull multiple images in parallel'
+	COMPGEN --include-deps Switch 'Also pull services declared as dependencies'
+	COMPGEN --no-parallel Switch 'Disable parallel pulling.'
+	COMPGEN --parallel Switch 'Deprecated, pull multiple images in parallel (enabled by default).'
 	COMPGEN --quiet Switch 'Pull without printing progress information'
 	COMPGEN '-q' Switch 'Pull without printing progress information'
-	COMPGEN --include-deps Switch 'Also pull services declared as dependencies'
 }
 
 Register-Completer docker-compose_push -Option {
