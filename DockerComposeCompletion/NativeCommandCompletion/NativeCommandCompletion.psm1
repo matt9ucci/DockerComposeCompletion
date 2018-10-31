@@ -16,8 +16,8 @@ class NativeCommandCompletionResult : System.Management.Automation.CompletionRes
 $nativeCommandCompleters = @{}
 
 function New-CompletionResult {
-	Param(
-		[Parameter(Mandatory = $true)]
+	param (
+		[Parameter(Mandatory)]
 		[string]$CompletionText,
 		[string]$TextType,
 		[string]$ToolTip = $CompletionText,
@@ -41,8 +41,8 @@ function New-CompletionResult {
 Set-Alias -Name COMPGEN -Value New-CompletionResult
 
 function Register-Completer {
-	Param(
-		[Parameter(Mandatory = $true)]
+	param (
+		[Parameter(Mandatory)]
 		[string]$Name,
 		$Completer,
 		[Alias('Option')]
@@ -62,8 +62,8 @@ function Register-Completer {
 }
 
 function Get-Completer {
-	Param(
-		[Parameter(Mandatory = $true)]
+	param (
+		[Parameter(Mandatory)]
 		[string]$Name,
 		[Alias('Option')]
 		[switch]$Parameter
@@ -77,12 +77,12 @@ function Get-Completer {
 }
 
 function Invoke-Completer {
-	Param(
-		[Parameter(Mandatory = $true, Position = 0)]
+	param (
+		[Parameter(Mandatory, Position = 0)]
 		[string]$Name,
-		[Parameter(Mandatory = $true, ParameterSetName = 'Completer')]
+		[Parameter(Mandatory, ParameterSetName = 'Completer')]
 		[switch]$Completer,
-		[Parameter(Mandatory = $true, ParameterSetName = 'Parameter')]
+		[Parameter(Mandatory, ParameterSetName = 'Parameter')]
 		[Alias('Option')]
 		[switch]$Parameter,
 		[Object[]]$ArgumentList
@@ -107,14 +107,14 @@ function Invoke-Completer {
 }
 
 function Register-NativeCommandArgumentCompleter {
-	Param(
-		[Parameter(Mandatory = $true)]
+	param (
+		[Parameter(Mandatory)]
 		[string]$CommandName,
-		[Parameter(Mandatory = $true)]
+		[Parameter(Mandatory)]
 		[scriptblock]$ScriptBlock
 	)
 
-	$CommandName, (Get-Alias -Definition $CommandName -ErrorAction SilentlyContinue).Name | ForEach-Object {
+	$CommandName, (Get-Alias -Definition $CommandName -ErrorAction Ignore).Name | ForEach-Object {
 		if ($_) {
 			Register-ArgumentCompleter -CommandName $_ -ScriptBlock $ScriptBlock -Native
 		}

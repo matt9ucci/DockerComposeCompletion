@@ -1,4 +1,4 @@
-﻿# Docker Compose 1.21.0
+﻿# Docker Compose 1.23.0
 Register-Completer docker-compose {
 	COMPGEN build Command 'Build or rebuild services'
 	COMPGEN bundle Command 'Generate a Docker bundle from the Compose file'
@@ -57,6 +57,7 @@ Register-Completer docker-compose_build -Option {
 	COMPGEN --memory string 'Sets memory limit for the build container'
 	COMPGEN '-m' string 'Sets memory limit for the build container'
 	COMPGEN --no-cache Switch 'Do not use cache when building the image'
+	COMPGEN --parallel Switch 'Build images in parallel.'
 	COMPGEN --pull Switch 'Always attempt to pull a newer version of the image'
 }
 
@@ -67,6 +68,7 @@ Register-Completer docker-compose_bundle -Option {
 }
 
 Register-Completer docker-compose_config -Option {
+	COMPGEN --hash string 'Print the service config hash, one per line. Set "service1,service2" for a list of specified services or use the wildcard symbol to display all services'
 	COMPGEN --quiet Switch 'Only validate the configuration, don''t print anything'
 	COMPGEN '-q' Switch 'Only validate the configuration, don''t print anything'
 	COMPGEN --resolve-image-digests Switch 'Pin image tags to digests'
@@ -201,8 +203,8 @@ Register-Completer docker-compose_up -Option {
 	COMPGEN --always-recreate-deps Switch 'Recreate dependent containers. Incompatible with --no-recreate'
 	COMPGEN --abort-on-container-exit Switch 'Stops all containers if any container was stopped. Incompatible with -d'
 	COMPGEN --build Switch 'Build images before starting containers'
-	COMPGEN --detach Switch 'Detached mode: Run containers in the background, print new container names. Incompatible with'
-	COMPGEN '-d' Switch 'Detached mode: Run containers in the background, print new container names. Incompatible with'
+	COMPGEN --detach Switch 'Detached mode: Run containers in the background, print new container names. Incompatible with --abort-on-container-exit.'
+	COMPGEN '-d' Switch 'Detached mode: Run containers in the background, print new container names. Incompatible with --abort-on-container-exit.'
 	COMPGEN --exit-code-from string 'Return the exit code of the selected service container. Implies --abort-on-container-exit'
 	COMPGEN --force-recreate Switch 'Recreate containers even if their configuration and image haven''t changed'
 	COMPGEN --no-build Switch 'Don''t build an image, even if it''s missing'
