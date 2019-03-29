@@ -29,7 +29,7 @@ Register-Completer docker-compose {
 }
 
 Register-Completer docker-compose -Option {
-	COMPGEN --compatibility Switch 'If set, Compose will attempt to convert deploy keys in v3 files to their non-Swarm equivalent'
+	COMPGEN --compatibility Switch 'If set, Compose will attempt to convert keys in v3 files to their non-Swarm equivalent'
 	COMPGEN --file string 'Specify an alternate compose file'
 	COMPGEN '-f' string 'Specify an alternate compose file'
 	COMPGEN --host string 'Daemon socket to connect to'
@@ -134,6 +134,8 @@ Register-Completer docker-compose_port -Option {
 }
 
 Register-Completer docker-compose_ps -Option {
+	COMPGEN --all Switch 'Show all stopped containers (including those created by the run command)'
+	COMPGEN '-a' Switch 'Show all stopped containers (including those created by the run command)'
 	COMPGEN --filter string 'Filter services by a property'
 	COMPGEN --quiet Switch 'Only display IDs'
 	COMPGEN '-q' Switch 'Only display IDs'
