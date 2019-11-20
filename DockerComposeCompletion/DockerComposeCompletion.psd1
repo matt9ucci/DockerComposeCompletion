@@ -1,7 +1,7 @@
 @{
 
 RootModule = 'DockerComposeCompletion.psm1'
-ModuleVersion = '1.24.0.190329'
+ModuleVersion = '1.25.0.191120'
 GUID = 'beba6899-d55e-4e1d-88f9-8a4d4a14d369'
 Author = 'Masatoshi Higuchi'
 CompanyName = 'N/A'
@@ -20,7 +20,7 @@ PrivateData = @{
 		Tags = 'docker-compose', 'completion'
 		LicenseUri = 'https://github.com/matt9ucci/DockerComposeCompletion/blob/master/LICENSE'
 		ProjectUri = 'https://github.com/matt9ucci/DockerComposeCompletion'
-		ReleaseNotes = 'First release for Docker Compose 1.24.0'
+		ReleaseNotes = 'First release for Docker Compose 1.25.0'
 	}
 }
 

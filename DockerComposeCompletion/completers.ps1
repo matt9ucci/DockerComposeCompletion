@@ -1,4 +1,4 @@
-﻿# Docker Compose 1.23.0
+﻿# Docker Compose 1.25.0
 Register-Completer docker-compose {
 	COMPGEN build Command 'Build or rebuild services'
 	COMPGEN bundle Command 'Generate a Docker bundle from the Compose file'
@@ -30,6 +30,7 @@ Register-Completer docker-compose {
 
 Register-Completer docker-compose -Option {
 	COMPGEN --compatibility Switch 'If set, Compose will attempt to convert keys in v3 files to their non-Swarm equivalent'
+	COMPGEN --env-file string 'Specify an alternate environment file'
 	COMPGEN --file string 'Specify an alternate compose file'
 	COMPGEN '-f' string 'Specify an alternate compose file'
 	COMPGEN --host string 'Daemon socket to connect to'
@@ -51,14 +52,17 @@ Register-Completer docker-compose -Option {
 }
 
 Register-Completer docker-compose_build -Option {
-	COMPGEN --compress Switch 'Compress the build context using gzip.'
 	COMPGEN --build-arg string 'Set build-time variables for services.'
+	COMPGEN --compress Switch 'Compress the build context using gzip.'
 	COMPGEN --force-rm Switch 'Always remove intermediate containers'
-	COMPGEN --memory string 'Sets memory limit for the build container'
-	COMPGEN '-m' string 'Sets memory limit for the build container'
+	COMPGEN --memory string 'Set memory limit for the build container'
+	COMPGEN '-m' string 'Set memory limit for the build container'
 	COMPGEN --no-cache Switch 'Do not use cache when building the image'
+	COMPGEN --no-rm Switch 'Do not remove intermediate containers after a successful build.'
 	COMPGEN --parallel Switch 'Build images in parallel.'
 	COMPGEN --pull Switch 'Always attempt to pull a newer version of the image'
+	COMPGEN --quiet string 'Don''t print anything to STDOUT'
+	COMPGEN '-q' string 'Don''t print anything to STDOUT'
 }
 
 Register-Completer docker-compose_bundle -Option {
@@ -69,6 +73,7 @@ Register-Completer docker-compose_bundle -Option {
 
 Register-Completer docker-compose_config -Option {
 	COMPGEN --hash string 'Print the service config hash, one per line. Set "service1,service2" for a list of specified services or use the wildcard symbol to display all services'
+	COMPGEN --no-interpolate Switch 'Don''t interpolate environment variables'
 	COMPGEN --quiet Switch 'Only validate the configuration, don''t print anything'
 	COMPGEN '-q' Switch 'Only validate the configuration, don''t print anything'
 	COMPGEN --resolve-image-digests Switch 'Pin image tags to digests'
