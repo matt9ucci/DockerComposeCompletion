@@ -13,7 +13,7 @@ $serviceAll = {
 
 $serviceRunning = {
 	Param($wordToComplete, $commandAst)
-	
+
 	$dcOptions = New-Object System.Collections.ArrayList
 	foreach ($ce in $commandAst.CommandElements) {
 		if ($ce.Extent.Text -in (Invoke-Completer docker-compose -Completer).CompletionText) {
@@ -34,7 +34,7 @@ $serviceRunning = {
 
 $serviceNotRunning = {
 	Param($wordToComplete, $commandAst)
-	
+
 	$dcOptions = New-Object System.Collections.ArrayList
 	foreach ($ce in $commandAst.CommandElements) {
 		if ($ce.Extent.Text -in (Invoke-Completer docker-compose -Completer).CompletionText) {
@@ -55,7 +55,7 @@ $serviceNotRunning = {
 
 $servicePaused = {
 	Param($wordToComplete, $commandAst)
-	
+
 	$dcOptions = New-Object System.Collections.ArrayList
 	foreach ($ce in $commandAst.CommandElements) {
 		if ($ce.Extent.Text -in (Invoke-Completer docker-compose -Completer).CompletionText) {
@@ -74,8 +74,11 @@ $servicePaused = {
 	$serviceNames | Sort-Object
 }
 
+Register-Completer docker-compose_--context { docker context ls --quiet }
+Register-Completer docker-compose_-c (Get-Completer docker-compose_--context)
 Register-Completer docker-compose_--log-level { 'debug', 'info', 'warning', 'error', 'critical' }
 Register-Completer docker-compose_build $serviceAll
+Register-Completer docker-compose_build_--progress { 'auto', 'plain', 'tty' }
 Register-Completer docker-compose_config_--hash $serviceAll
 Register-Completer docker-compose_create $serviceAll
 Register-Completer docker-compose_down_--rmi { 'all', 'local' }

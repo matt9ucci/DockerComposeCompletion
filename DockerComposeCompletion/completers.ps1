@@ -1,7 +1,6 @@
-﻿# Docker Compose 1.25.0
+﻿# Docker Compose 1.26.0
 Register-Completer docker-compose {
 	COMPGEN build Command 'Build or rebuild services'
-	COMPGEN bundle Command 'Generate a Docker bundle from the Compose file'
 	COMPGEN config Command 'Validate and view the Compose file'
 	COMPGEN create Command 'Create services'
 	COMPGEN down Command 'Stop and remove containers, networks, images, and volumes'
@@ -29,6 +28,8 @@ Register-Completer docker-compose {
 }
 
 Register-Completer docker-compose -Option {
+	COMPGEN --context string 'Specify a context name'
+	COMPGEN '-c' string 'Specify a context name'
 	COMPGEN --compatibility Switch 'If set, Compose will attempt to convert keys in v3 files to their non-Swarm equivalent'
 	COMPGEN --env-file string 'Specify an alternate environment file'
 	COMPGEN --file string 'Specify an alternate compose file'
@@ -61,14 +62,9 @@ Register-Completer docker-compose_build -Option {
 	COMPGEN --no-rm Switch 'Do not remove intermediate containers after a successful build.'
 	COMPGEN --parallel Switch 'Build images in parallel.'
 	COMPGEN --pull Switch 'Always attempt to pull a newer version of the image'
+	COMPGEN --progress string 'Set type of progress output (auto, plain, tty). EXPERIMENTAL flag for native builder. To enable, run with COMPOSE_DOCKER_CLI_BUILD=1)'
 	COMPGEN --quiet string 'Don''t print anything to STDOUT'
 	COMPGEN '-q' string 'Don''t print anything to STDOUT'
-}
-
-Register-Completer docker-compose_bundle -Option {
-	COMPGEN --output string 'Path to write the bundle file to. Defaults to "<project name>.dab"'
-	COMPGEN '-o' string 'Path to write the bundle file to. Defaults to "<project name>.dab"'
-	COMPGEN --push-images Switch 'Automatically push images for any services which have a `build` option specified'
 }
 
 Register-Completer docker-compose_config -Option {
@@ -106,11 +102,11 @@ Register-Completer docker-compose_exec -Option {
 	COMPGEN '-d' Switch 'Detached mode: Run command in the background'
 	COMPGEN --env string 'Set environment variables (can be used multiple times, not supported in API < 1.25)'
 	COMPGEN '-e' string 'Set environment variables (can be used multiple times, not supported in API < 1.25)'
-	COMPGEN --index string 'index of the container if there are multiple instances of a service'
+	COMPGEN --index string 'index of the container if there are multiple instances of a service [default: 1]'
 	COMPGEN --privileged Switch 'Give extended privileges to the process'
 	COMPGEN --user string 'Run the command as this user'
 	COMPGEN '-u' string 'Run the command as this user'
-	COMPGEN '-T' Switch 'Disable pseudo-tty allocation'
+	COMPGEN '-T' Switch 'Disable pseudo-tty allocation. By default `docker-compose exec` allocates a TTY.'
 	COMPGEN --workdir string 'Path to workdir directory for this command.'
 	COMPGEN '-w' string 'Path to workdir directory for this command.'
 }
@@ -134,7 +130,7 @@ Register-Completer docker-compose_logs -Option {
 }
 
 Register-Completer docker-compose_port -Option {
-	COMPGEN --index string 'index of the container if there are multiple instances of a service'
+	COMPGEN --index string 'index of the container if there are multiple instances of a service [default: 1]'
 	COMPGEN --protocol string 'tcp or udp [default: tcp]'
 }
 
@@ -209,6 +205,7 @@ Register-Completer docker-compose_stop -Option {
 Register-Completer docker-compose_up -Option {
 	COMPGEN --always-recreate-deps Switch 'Recreate dependent containers. Incompatible with --no-recreate'
 	COMPGEN --abort-on-container-exit Switch 'Stops all containers if any container was stopped. Incompatible with -d'
+	COMPGEN --attach-dependencies Switch 'Attach to dependent containers'
 	COMPGEN --build Switch 'Build images before starting containers'
 	COMPGEN --detach Switch 'Detached mode: Run containers in the background, print new container names. Incompatible with --abort-on-container-exit.'
 	COMPGEN '-d' Switch 'Detached mode: Run containers in the background, print new container names. Incompatible with --abort-on-container-exit.'

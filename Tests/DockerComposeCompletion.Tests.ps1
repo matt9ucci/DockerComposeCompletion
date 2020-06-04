@@ -14,9 +14,8 @@ Describe 'docker-compose' {
 	$result[4].CompletionText | Should Be --tlsverify
 
 	$result = Get-Result 'docker-compose bu'
-	$result.Count | Should Be 2
+	$result.Count | Should Be 1
 	$result[0].CompletionText | Should Be build
-	$result[1].CompletionText | Should Be bundle
 }
 
 Describe 'docker-compose up' {

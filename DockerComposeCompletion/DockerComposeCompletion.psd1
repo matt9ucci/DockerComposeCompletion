@@ -1,11 +1,11 @@
 @{
 
 RootModule = 'DockerComposeCompletion.psm1'
-ModuleVersion = '1.25.0.191120'
+ModuleVersion = '1.26.0.200604'
 GUID = 'beba6899-d55e-4e1d-88f9-8a4d4a14d369'
 Author = 'Masatoshi Higuchi'
 CompanyName = 'N/A'
-Copyright = '(c) 2019 Masatoshi Higuchi. All rights reserved.'
+Copyright = '(c) 2020 Masatoshi Higuchi. All rights reserved.'
 Description = 'Docker Compose command completion for PowerShell.'
 PowerShellVersion = '5.0'
 NestedModules = @('NativeCommandCompletion')
@@ -20,7 +20,7 @@ PrivateData = @{
 		Tags = 'docker-compose', 'completion'
 		LicenseUri = 'https://github.com/matt9ucci/DockerComposeCompletion/blob/master/LICENSE'
 		ProjectUri = 'https://github.com/matt9ucci/DockerComposeCompletion'
-		ReleaseNotes = 'First release for Docker Compose 1.25.0'
+		ReleaseNotes = 'First release for Docker Compose 1.26.0'
 	}
 }
 
