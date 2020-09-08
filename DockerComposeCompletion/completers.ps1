@@ -1,4 +1,4 @@
-﻿# Docker Compose 1.26.0
+﻿# Docker Compose 1.27.0
 Register-Completer docker-compose {
 	COMPGEN build Command 'Build or rebuild services'
 	COMPGEN config Command 'Validate and view the Compose file'
@@ -24,13 +24,13 @@ Register-Completer docker-compose {
 	COMPGEN top Command 'Display the running processes'
 	COMPGEN unpause Command 'Unpause services'
 	COMPGEN up Command 'Create and start containers'
-	COMPGEN version Command 'Show the Docker-Compose version information'
+	COMPGEN version Command 'Show version information and quit'
 }
 
 Register-Completer docker-compose -Option {
 	COMPGEN --context string 'Specify a context name'
 	COMPGEN '-c' string 'Specify a context name'
-	COMPGEN --compatibility Switch 'If set, Compose will attempt to convert keys in v3 files to their non-Swarm equivalent'
+	COMPGEN --compatibility Switch 'If set, Compose will attempt to convert keys in v3 files to their non-Swarm equivalent (DEPRECATED)'
 	COMPGEN --env-file string 'Specify an alternate environment file'
 	COMPGEN --file string 'Specify an alternate compose file'
 	COMPGEN '-f' string 'Specify an alternate compose file'
@@ -68,8 +68,8 @@ Register-Completer docker-compose_build -Option {
 }
 
 Register-Completer docker-compose_config -Option {
-	COMPGEN --hash string 'Print the service config hash, one per line. Set "service1,service2" for a list of specified services or use the wildcard symbol to display all services'
-	COMPGEN --no-interpolate Switch 'Don''t interpolate environment variables'
+	COMPGEN --hash string 'Print the service config hash, one per line. Set "service1,service2" for a list of specified services or use the wildcard symbol to display all services.'
+	COMPGEN --no-interpolate Switch 'Don''t interpolate environment variables.'
 	COMPGEN --quiet Switch 'Only validate the configuration, don''t print anything'
 	COMPGEN '-q' Switch 'Only validate the configuration, don''t print anything'
 	COMPGEN --resolve-image-digests Switch 'Pin image tags to digests'
@@ -205,7 +205,7 @@ Register-Completer docker-compose_stop -Option {
 Register-Completer docker-compose_up -Option {
 	COMPGEN --always-recreate-deps Switch 'Recreate dependent containers. Incompatible with --no-recreate'
 	COMPGEN --abort-on-container-exit Switch 'Stops all containers if any container was stopped. Incompatible with -d'
-	COMPGEN --attach-dependencies Switch 'Attach to dependent containers'
+	COMPGEN --attach-dependencies Switch 'Attach to dependent containers.'
 	COMPGEN --build Switch 'Build images before starting containers'
 	COMPGEN --detach Switch 'Detached mode: Run containers in the background, print new container names. Incompatible with --abort-on-container-exit.'
 	COMPGEN '-d' Switch 'Detached mode: Run containers in the background, print new container names. Incompatible with --abort-on-container-exit.'
