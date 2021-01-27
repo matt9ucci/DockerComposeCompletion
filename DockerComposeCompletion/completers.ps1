@@ -1,9 +1,9 @@
-﻿# Docker Compose 1.27.0
+﻿# Docker Compose 1.28.0
 Register-Completer docker-compose {
 	COMPGEN build Command 'Build or rebuild services'
 	COMPGEN config Command 'Validate and view the Compose file'
 	COMPGEN create Command 'Create services'
-	COMPGEN down Command 'Stop and remove containers, networks, images, and volumes'
+	COMPGEN down Command 'Stop and remove resources'
 	COMPGEN events Command 'Receive real time events from containers'
 	COMPGEN exec Command 'Execute a command in a running container'
 	COMPGEN help Command 'Get help on a command'
@@ -28,6 +28,7 @@ Register-Completer docker-compose {
 }
 
 Register-Completer docker-compose -Option {
+	COMPGEN --ansi string 'Control when to print ANSI control characters'
 	COMPGEN --context string 'Specify a context name'
 	COMPGEN '-c' string 'Specify a context name'
 	COMPGEN --compatibility Switch 'If set, Compose will attempt to convert keys in v3 files to their non-Swarm equivalent (DEPRECATED)'
@@ -37,7 +38,8 @@ Register-Completer docker-compose -Option {
 	COMPGEN --host string 'Daemon socket to connect to'
 	COMPGEN '-H' string 'Daemon socket to connect to'
 	COMPGEN --log-level string 'Set log level (DEBUG, INFO, WARNING, ERROR, CRITICAL)'
-	COMPGEN --no-ansi Switch 'Do not print ANSI control characters'
+	COMPGEN --no-ansi Switch 'Do not print ANSI control characters (DEPRECATED)'
+	COMPGEN --profile string 'Specify a profile to enable'
 	COMPGEN --project-directory string 'Specify an alternate working directory'
 	COMPGEN --project-name string 'Specify an alternate project name'
 	COMPGEN '-p' string 'Specify an alternate project name'
@@ -62,7 +64,7 @@ Register-Completer docker-compose_build -Option {
 	COMPGEN --no-rm Switch 'Do not remove intermediate containers after a successful build.'
 	COMPGEN --parallel Switch 'Build images in parallel.'
 	COMPGEN --pull Switch 'Always attempt to pull a newer version of the image'
-	COMPGEN --progress string 'Set type of progress output (auto, plain, tty). EXPERIMENTAL flag for native builder. To enable, run with COMPOSE_DOCKER_CLI_BUILD=1)'
+	COMPGEN --progress string 'Set type of progress output (auto, plain, tty).'
 	COMPGEN --quiet string 'Don''t print anything to STDOUT'
 	COMPGEN '-q' string 'Don''t print anything to STDOUT'
 }
@@ -124,6 +126,7 @@ Register-Completer docker-compose_logs -Option {
 	COMPGEN --follow Switch 'Follow log output'
 	COMPGEN '-f' Switch 'Follow log output'
 	COMPGEN --no-color Switch 'Produce monochrome output'
+	COMPGEN --no-log-prefix Switch 'Don''t print prefix in logs.'
 	COMPGEN --tail string 'Number of lines to show from the end of the logs for each container'
 	COMPGEN --timestamps Switch 'Show timestamps'
 	COMPGEN '-t' Switch 'Show timestamps'
@@ -214,6 +217,7 @@ Register-Completer docker-compose_up -Option {
 	COMPGEN --no-build Switch 'Don''t build an image, even if it''s missing'
 	COMPGEN --no-color Switch 'Produce monochrome output'
 	COMPGEN --no-deps Switch 'Don''t start linked services'
+	COMPGEN --no-log-prefix Switch 'Don''t print prefix in logs.'
 	COMPGEN --no-recreate Switch 'If containers already exist, don''t recreate them. Incompatible with --force-recreate and -V'
 	COMPGEN --no-start Switch 'Don''t start the services after creating them.'
 	COMPGEN --quiet-pull Switch 'Pull without printing progress information'

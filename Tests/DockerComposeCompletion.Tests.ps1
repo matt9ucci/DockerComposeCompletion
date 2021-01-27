@@ -29,11 +29,12 @@ Describe "docker-compose" {
 Describe 'docker-compose up' {
 	It "completes up --no-" {
 		$result = Get-Result 'docker-compose up --no-'
-		$result | Should -HaveCount 5
+		$result | Should -HaveCount 6
 		$result[0].CompletionText | Should -Be --no-build
 		$result[1].CompletionText | Should -Be --no-color
 		$result[2].CompletionText | Should -Be --no-deps
-		$result[3].CompletionText | Should -Be --no-recreate
-		$result[4].CompletionText | Should -Be --no-start
+		$result[3].CompletionText | Should -Be --no-log-prefix
+		$result[4].CompletionText | Should -Be --no-recreate
+		$result[5].CompletionText | Should -Be --no-start
 	}
 }

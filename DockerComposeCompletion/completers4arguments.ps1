@@ -76,6 +76,7 @@ $servicePaused = {
 
 Register-Completer docker-compose_--context { docker context ls --quiet }
 Register-Completer docker-compose_-c (Get-Completer docker-compose_--context)
+Register-Completer docker-compose_--ansi { 'always', 'auto', 'never' }
 Register-Completer docker-compose_--log-level { 'debug', 'info', 'warning', 'error', 'critical' }
 Register-Completer docker-compose_build $serviceAll
 Register-Completer docker-compose_build_--progress { 'auto', 'plain', 'tty' }
