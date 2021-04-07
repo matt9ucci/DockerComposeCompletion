@@ -1,4 +1,4 @@
-﻿# Docker Compose 1.28.0
+﻿# Docker Compose 1.29.0
 Register-Completer docker-compose {
 	COMPGEN build Command 'Build or rebuild services'
 	COMPGEN config Command 'Validate and view the Compose file'
@@ -72,6 +72,7 @@ Register-Completer docker-compose_build -Option {
 Register-Completer docker-compose_config -Option {
 	COMPGEN --hash string 'Print the service config hash, one per line. Set "service1,service2" for a list of specified services or use the wildcard symbol to display all services.'
 	COMPGEN --no-interpolate Switch 'Don''t interpolate environment variables.'
+	COMPGEN --profiles Switch 'Print the profile names, one per line.'
 	COMPGEN --quiet Switch 'Only validate the configuration, don''t print anything'
 	COMPGEN '-q' Switch 'Only validate the configuration, don''t print anything'
 	COMPGEN --resolve-image-digests Switch 'Pin image tags to digests'
