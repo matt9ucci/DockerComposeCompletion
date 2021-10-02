@@ -2,6 +2,12 @@
 
 ![demo](demo.gif)
 
+:memo: Are you looking for a completer for **Compose V2** (`docker compose`)?
+If so, try the new version of [DockerCompletion](https://github.com/matt9ucci/DockerCompletion)!
+
+:memo: DockerComposeCompletion has been supporting V1 (`docker-compose`).
+I am considering whether the V2 should be supported or not. See [the issue comments](https://github.com/matt9ucci/DockerComposeCompletion/issues/1).
+
 ## Requirements
 * PowerShell >= 5.0
 * docker-compose cli in `$env:PATH`
